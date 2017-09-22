@@ -1,11 +1,10 @@
 package br.unb.exp.search;
 
-import br.unb.exp.Grafo.Graph;
-import br.unb.exp.Grafo.Node;
+import br.unb.exp.Graph.Graph;
 
 public class AStarSearch extends Search {
     @Override
-    protected void realizarBusca(Graph g, Node origin, Node target) {
+    protected void realizarBusca(Graph g, int origin, int target) {
 
     }
 }

@@ -7,6 +7,8 @@ public class SearchStatistics {
     int uniqueNodesVisited;
     long execTime;
     HashSet<Integer> visited;
+    double pathWeight;
+
     public SearchStatistics(){
         visitedNodes = 0;
         uniqueNodesVisited = 0;
@@ -14,5 +16,8 @@ public class SearchStatistics {
         visited = new HashSet<Integer>();
     }
 
+    boolean wasVisited(int nodeid){
+        return visited.contains(nodeid);
+    }
 
 }

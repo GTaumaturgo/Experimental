@@ -1,10 +1,10 @@
 package br.unb.exp.search;
 
-import br.unb.exp.Grafo.Graph;
-import br.unb.exp.Grafo.Node;
+import br.unb.exp.Graph.Graph;
+import br.unb.exp.Graph.Node;
 
 public abstract class Search {
-    SearchStatistics statistics;
+    protected SearchStatistics statistics;
 
 
 
@@ -14,10 +14,10 @@ public abstract class Search {
 
     }
 
-    protected abstract void realizarBusca(Graph g, Node origin, Node target);
+    protected abstract void realizarBusca(Graph g, int origin, int target);
 
 
-    public void buscaAux(Graph g, Node origin, Node target){
+    public void buscaAux(Graph g, int origin, int target){
         statistics = new SearchStatistics();
 
         long start = System.nanoTime();
