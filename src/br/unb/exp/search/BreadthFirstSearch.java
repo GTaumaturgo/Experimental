@@ -15,6 +15,7 @@ public class BreadthFirstSearch extends Search {
         for(Boolean b: visited) b = false;
 
         q.add(new Edge(origin,0));
+        
         while(true){
             Edge e = q.peek(); q.remove();
             markVisit(e.to);
