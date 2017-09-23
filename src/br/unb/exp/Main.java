@@ -23,9 +23,12 @@ public class Main {
         BreadthFirstSearch bfs = new BreadthFirstSearch();
         bfs.buscaAux(g,0,3);
         SearchStatistics statistics = bfs.getStatistics();
-        printa(statistics.execTime);
-        printa(statistics.pathWeight);
-        printa(statistics.uniqueNodesVisited);
-        printa(statistics.visitedNodes);
+
+        
+
+
+
+
+
     }
 }

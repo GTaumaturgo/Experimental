@@ -10,8 +10,8 @@ public class SearchStatistics {
     public double pathWeight;
 
     public SearchStatistics(){
-        visitedNodes = 0;
-        uniqueNodesVisited = 0;
+        visitedNodes = -1;
+        uniqueNodesVisited = -1;
         execTime = 0;
         visited = new HashSet<Integer>();
     }
