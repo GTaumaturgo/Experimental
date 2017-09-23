@@ -3,6 +3,7 @@ package br.unb.exp;
 import br.unb.exp.Graph.Graph;
 import br.unb.exp.search.BreadthFirstSearch;
 import br.unb.exp.search.SearchStatistics;
+import br.unb.exp.search.UniformCostSearch;
 
 public class Main {
 
@@ -24,7 +25,16 @@ public class Main {
         bfs.buscaAux(g,0,3);
         SearchStatistics statistics = bfs.getStatistics();
 
+        UniformCostSearch ucs = new UniformCostSearch();
+        ucs.buscaAux(g,0,3);
+        SearchStatistics st = ucs.getStatistics();
+
         
+
+
+
+
+
 
 
 
