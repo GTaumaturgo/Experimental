@@ -3,11 +3,11 @@ package br.unb.exp.search;
 import java.util.HashSet;
 
 public class SearchStatistics {
-    int visitedNodes;
-    int uniqueNodesVisited;
-    long execTime;
+    public int visitedNodes;
+    public int uniqueNodesVisited;
+    public long execTime;
     HashSet<Integer> visited;
-    double pathWeight;
+    public double pathWeight;
 
     public SearchStatistics(){
         visitedNodes = 0;

@@ -16,8 +16,13 @@ public class BreadthFirstSearch extends Search {
 
         q.add(new Edge(origin,0));
         
-        while(true){
+        while(true && q.size() > 0){
             Edge e = q.peek(); q.remove();
+
+            if (statistics.wasVisited(e.to)){
+                markVisit(e.to);
+                continue;
+            }
             markVisit(e.to);
 
             if(e.to == target){
@@ -25,7 +30,6 @@ public class BreadthFirstSearch extends Search {
                 break;
             }
 
-            if (statistics.wasVisited(e.to)) continue;
 
             for (Edge w: g.getNode(e.to).adjList) {
                 if(!statistics.wasVisited(w.to)){

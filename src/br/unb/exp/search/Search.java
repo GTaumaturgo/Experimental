@@ -28,4 +28,6 @@ public abstract class Search {
         statistics.uniqueNodesVisited = statistics.visited.size();
     }
 
+    public SearchStatistics getStatistics(){return statistics;}
+
 }
