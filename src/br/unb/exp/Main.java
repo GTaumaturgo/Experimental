@@ -19,17 +19,19 @@ public class Main {
         Graph g = new Graph(4);
         g.addEdge(0,1,1.0);
         g.addEdge(1,2,1.0);
+        g.addEdge(0,2,1.99);
         g.addEdge(2,3,1.0);
         g.addEdge(0,3,1000.0);
         BreadthFirstSearch bfs = new BreadthFirstSearch();
         bfs.buscaAux(g,0,3);
         SearchStatistics statistics = bfs.getStatistics();
-
+        printa(statistics.pathWeight);
         UniformCostSearch ucs = new UniformCostSearch();
         ucs.buscaAux(g,0,3);
         SearchStatistics st = ucs.getStatistics();
+        printa(st.pathWeight);
 
-        
+
 
 
 

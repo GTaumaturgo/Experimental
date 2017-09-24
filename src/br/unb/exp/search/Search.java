@@ -11,17 +11,19 @@ public abstract class Search {
 
 
 
-    public void markVisit(int nodeId){
+    public void markVisit(Edge e){
         statistics.visitedNodes++;
-        statistics.visited.add(nodeId);
-
+        statistics.visited.add(e.to);
+//        System.out.println(statistics.bestPath.size());
+        statistics.bestPath.add(e.to,Math.min(statistics.bestPath.get(e.to),e.weight));
     }
 
     protected abstract void realizarBusca(Graph g, int origin, int target);
+    protected abstract void enqueue(Queue<Edge> q, Edge aggregated, Edge e);
 
 
     public void buscaAux(Graph g, int origin, int target){
-        statistics = new SearchStatistics();
+        statistics = new SearchStatistics(g.getSize());
 
         long start = System.nanoTime();
         realizarBusca(g,origin,target);
@@ -33,16 +35,13 @@ public abstract class Search {
 
     public SearchStatistics getStatistics(){return statistics;}
 
-    public void itera(Graph g, int origin, int target, Queue<Edge> q){
+    public void iterate(Graph g, int origin, int target, Queue<Edge> q){
         q.add(new Edge(origin,0));
         while(true && q.size() > 0){
             Edge e = q.peek(); q.remove();
 
-            if (statistics.wasVisited(e.to)){
-                markVisit(e.to);
-                continue;
-            }
-            markVisit(e.to);
+
+            markVisit(e);
 
             if(e.to == target){
                 statistics.pathWeight = e.weight;
@@ -50,11 +49,8 @@ public abstract class Search {
             }
 
 
-            for (Edge w: g.getNode(e.to).adjList) {
-                if(!statistics.wasVisited(w.to)){
-                    q.add(new Edge(w.to,e.weight + w.weight));
-                }
-            }
+            for (Edge w: g.getNode(e.to).adjList)
+                if (statistics.bestPath.get(w.to) > (e.weight + w.weight)) enqueue(q, e, w);
 
         }
     }
