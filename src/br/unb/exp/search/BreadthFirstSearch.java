@@ -22,4 +22,9 @@ public class BreadthFirstSearch extends Search {
     protected void enqueue(Queue<Edge> q, Edge aggregated, Edge e) {
         q.add(new Edge(e.to,aggregated.weight + e.weight));
     }
+
+    @Override
+    protected boolean condition(Edge e, Edge w) {
+        return statistics.ancestor.get(w.to).to == -1;
+    }
 }

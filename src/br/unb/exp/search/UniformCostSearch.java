@@ -19,4 +19,9 @@ public class UniformCostSearch extends Search {
     protected void enqueue(Queue<Edge> q, Edge aggregated, Edge e) {
         q.add(new Edge( e.to,aggregated.weight + e.weight));
     }
+
+    @Override
+    protected boolean condition(Edge e, Edge w) {
+        return statistics.bestPath.get(w.to) > (e.weight + w.weight);
+    }
 }
