@@ -11,13 +11,5 @@ public class BeamSearch extends Search {
 
     }
 
-    @Override
-    protected void enqueue(Queue<Edge> q, Edge aggregated, Edge e) {
 
-    }
-
-    @Override
-    protected boolean condition(Edge e, Edge w) {
-        return false;
-    }
 }

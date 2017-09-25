@@ -12,19 +12,29 @@ public class BreadthFirstSearch extends Search {
         ArrayDeque<Edge> q = new ArrayDeque<>();
 
 
-        iterate(g,origin,target,q);
+        q.add(new Edge(origin,0));
+        while(q.size() > 0){
+            Edge e = q.peek(); q.remove();
 
+            markVisit(e);
+            if(e.to == target){
+                statistics.pathWeight = e.weight;
+                break;
+            }
+
+
+            for (Edge w: g.getNode(e.to).adjList)
+
+                if (statistics.ancestor.get(w.to).to == -1){
+
+                    q.add(new Edge(w.to,w.weight + e.weight));
+                    statistics.ancestor.add(w.to,new Edge(e.to,w.weight));
+                }
+
+        }
 
 
     }
 
-    @Override
-    protected void enqueue(Queue<Edge> q, Edge aggregated, Edge e) {
-        q.add(new Edge(e.to,aggregated.weight + e.weight));
-    }
 
-    @Override
-    protected boolean condition(Edge e, Edge w) {
-        return statistics.ancestor.get(w.to).to == -1;
-    }
 }
