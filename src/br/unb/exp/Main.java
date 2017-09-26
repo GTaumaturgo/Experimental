@@ -48,7 +48,7 @@ public class Main {
             Scanner input = new Scanner(f);
             while(input.hasNext()){
 
-                String s = input.next();
+                String s = input.next();// ignorar primeira letra
                 int idx = input.nextInt();
                 idx--;// indexado em 0
                 double lon = input.nextDouble();
@@ -57,10 +57,29 @@ public class Main {
                 lat /= 1000000;
 
                 coordinates.put(idx, new Coordinate(lat,lon));
-
             }
+            input.close();
         }
         catch (Exception e){printa("arquivo n encontrado");}
+        try{
+
+            File f = new File(prefix + graph);
+            Scanner input = new Scanner(f);
+            while(input.hasNext()){
+                String s = input.next();
+                int a = input.nextInt();
+                int b = input.nextInt();
+                a--;
+                b--;//indexado em 0
+                int w = input.nextInt();
+                h.addEdge(a,b,(double)w);// TODO descobrir a unidade que ele dá essa distancia, porque a distanciad da heuristica ta vindo em metros e n pode misturar.
+
+            }
+            input.close();
+        }
+        catch (Exception e){printa(e.getMessage());}
+
+
         System.out.println(coordinates.get(0).longitude);
 
 
