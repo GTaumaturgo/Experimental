@@ -5,6 +5,10 @@ import br.unb.exp.search.BreadthFirstSearch;
 import br.unb.exp.search.SearchStatistics;
 import br.unb.exp.search.UniformCostSearch;
 
+import java.io.File;
+import java.util.HashMap;
+import java.util.Scanner;
+
 public class Main {
 
 
@@ -32,7 +36,32 @@ public class Main {
         printa(st.pathWeight);
 
 
+        Graph h = new Graph(264346);
 
+        String prefix = "files/";
+        String coord = "USA-road-d.NY.co";
+        String graph = "USA-road-d.NY.gr";
+        HashMap<Integer,Coordinate> coordinates = new HashMap<>();
+        try{
+
+            File f = new File(prefix + coord);
+            Scanner input = new Scanner(f);
+            while(input.hasNext()){
+
+                String s = input.next();
+                int idx = input.nextInt();
+                idx--;// indexado em 0
+                double lon = input.nextDouble();
+                lon /= 1000000; // precisa dividir por 100
+                double lat = input.nextDouble();
+                lat /= 1000000;
+
+                coordinates.put(idx, new Coordinate(lat,lon));
+
+            }
+        }
+        catch (Exception e){printa("arquivo n encontrado");}
+        System.out.println(coordinates.get(0).longitude);
 
 
 
