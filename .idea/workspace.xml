@@ -5,28 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="789b974e-19f1-4946-8166-29411265117f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/br/unb/exp/search/DepthFirstSearch.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/Main.class" afterPath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/AStarSearch.class" afterPath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/AStarSearch.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/BeamSearch.class" afterPath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/BeamSearch.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/BreadthFirstSearch.class" afterPath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/BreadthFirstSearch.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/DWAStarSearch.class" afterPath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/DWAStarSearch.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/GreedySearch.class" afterPath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/GreedySearch.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/HeuristicState.class" afterPath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/HeuristicState.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/Search.class" afterPath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/Search.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/SearchStatistics.class" afterPath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/SearchStatistics.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/UniformCostSearch.class" afterPath="$PROJECT_DIR$/out/production/Experimental/br/unb/exp/search/UniformCostSearch.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/br/unb/exp/Main.java" afterPath="$PROJECT_DIR$/src/br/unb/exp/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/br/unb/exp/search/AStarSearch.java" afterPath="$PROJECT_DIR$/src/br/unb/exp/search/AStarSearch.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/br/unb/exp/search/BeamSearch.java" afterPath="$PROJECT_DIR$/src/br/unb/exp/search/BeamSearch.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/br/unb/exp/search/BreadthFirstSearch.java" afterPath="$PROJECT_DIR$/src/br/unb/exp/search/BreadthFirstSearch.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/br/unb/exp/search/DWAStarSearch.java" afterPath="$PROJECT_DIR$/src/br/unb/exp/search/DWAStarSearch.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/br/unb/exp/search/GreedySearch.java" afterPath="$PROJECT_DIR$/src/br/unb/exp/search/GreedySearch.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/br/unb/exp/search/HeuristicState.java" afterPath="$PROJECT_DIR$/src/br/unb/exp/search/HeuristicState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/br/unb/exp/search/Search.java" afterPath="$PROJECT_DIR$/src/br/unb/exp/search/Search.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/br/unb/exp/search/SearchStatistics.java" afterPath="$PROJECT_DIR$/src/br/unb/exp/search/SearchStatistics.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/br/unb/exp/search/UniformCostSearch.java" afterPath="$PROJECT_DIR$/src/br/unb/exp/search/UniformCostSearch.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -84,7 +63,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BreadthFirstSearch.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BreadthFirstSearch.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/br/unb/exp/search/BreadthFirstSearch.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="327">
@@ -106,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/br/unb/exp/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="73" column="45" lean-forward="false" selection-start-line="73" selection-start-column="45" selection-end-line="73" selection-end-column="45" />
+            <state relative-caret-position="190">
+              <caret line="81" column="47" lean-forward="false" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -200,8 +179,8 @@
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/src/br/unb/exp/search/SearchStatistics.java" />
         <option value="$PROJECT_DIR$/src/br/unb/exp/search/UniformCostSearch.java" />
-        <option value="$PROJECT_DIR$/src/br/unb/exp/Main.java" />
         <option value="$PROJECT_DIR$/src/br/unb/exp/search/BreadthFirstSearch.java" />
+        <option value="$PROJECT_DIR$/src/br/unb/exp/Main.java" />
       </list>
     </option>
   </component>
@@ -443,7 +422,7 @@
       <workItem from="1506539477284" duration="3050000" />
       <workItem from="1506701803524" duration="4886000" />
       <workItem from="1506806051431" duration="398000" />
-      <workItem from="1506871237987" duration="10645000" />
+      <workItem from="1506871237987" duration="10717000" />
     </task>
     <task id="LOCAL-00001" summary="adicionados arquivos com os vértices e coordenadas">
       <created>1506454069942</created>
@@ -456,7 +435,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74592000" />
+    <option name="totallyTimeSpent" value="74664000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -953,20 +932,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/unb/exp/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/br/unb/exp/search/BreadthFirstSearch.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="73" column="45" lean-forward="false" selection-start-line="73" selection-start-column="45" selection-end-line="73" selection-end-column="45" />
+        <state relative-caret-position="327">
+          <caret line="24" column="30" lean-forward="true" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/unb/exp/search/BreadthFirstSearch.java">
+    <entry file="file://$PROJECT_DIR$/src/br/unb/exp/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="24" column="30" lean-forward="true" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+        <state relative-caret-position="190">
+          <caret line="81" column="47" lean-forward="false" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

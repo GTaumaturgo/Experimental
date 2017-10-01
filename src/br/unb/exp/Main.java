@@ -79,8 +79,8 @@ public class Main {
 //        ucs.buscaAux(0,3);
 //        SearchStatistics st = ucs.getStatistics();
 //        printa(st.pathWeight);
-//        GreedySearch gs = new GreedySearch(coordinates);
-//        gs.buscaAux(h,0,3);
+//        GreedySearch gs = new GreedySearch(h,coordinates);
+//        gs.buscaAux(0,3);
 //        st = gs.getStatistics();
 //        printa(st.pathWeight);
 
