@@ -1,17 +1,47 @@
 package br.unb.exp.search;
 
+import br.unb.exp.Calculator.Calculator;
+import br.unb.exp.Coordinate;
 import br.unb.exp.Graph.Edge;
 import br.unb.exp.Graph.Graph;
 
+import java.util.HashMap;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
 public class GreedySearch extends Search {
-    @Override
-    protected void realizarBusca(Graph g, int origin, int target) {
-        PriorityQueue<HeuristicState> q;
+    HashMap<Integer,Coordinate> coordinates;
 
-//        q.add(new HeuristicState(new Edge(origin,0.0)))
+    public GreedySearch(Graph g, HashMap<Integer, Coordinate> coordinates) {
+        this.g = g;
+        this.coordinates = coordinates;
+    }
+
+    @Override
+    protected void realizarBusca(int origin, int target) {
+        PriorityQueue<HeuristicState> q = new PriorityQueue<>();
+        Calculator c = new Calculator();
+
+
+
+
+        q.add(new HeuristicState(new Edge(origin,0.0),0.0));
+        while(q.size() > 0){
+
+
+            HeuristicState u = q.poll();
+            markVisit(u.estimatedCost);
+            if(u.estimatedCost.to == target){
+                statistics.pathWeight = u.realCost;
+                break;
+            }
+
+            for(Edge w: g.getNode(u.estimatedCost.to).adjList){
+
+                double distance = c.calculateDistance(coordinates.get(target),coordinates.get(w.to));
+                q.add(new HeuristicState(new Edge(w.to,distance),u.realCost + w.weight));
+                
+            }
+        }
     }
 
 }

@@ -7,14 +7,22 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 public class BreadthFirstSearch extends Search {
+
+
+    public BreadthFirstSearch(Graph g) {
+        this.g = g;
+        this.statistics = new SearchStatistics(g.getSize());
+    }
+
     @Override
-    protected void realizarBusca(Graph g, int origin, int target) {
+    protected void realizarBusca(int origin, int target) {
         ArrayDeque<Edge> q = new ArrayDeque<>();
 
 
         q.add(new Edge(origin,0));
         while(q.size() > 0){
-            Edge e = q.peek(); q.remove();
+//            System.out.println("jorge");
+            Edge e = q.poll();
 
             markVisit(e);
             if(e.to == target){

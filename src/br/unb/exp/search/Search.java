@@ -8,23 +8,21 @@ import java.util.Queue;
 
 public abstract class Search {
     protected SearchStatistics statistics;
+    Graph g;
 
 
-
-    public void markVisit(Edge e){
+    public void markVisit(Edge e){// TODO trocar pra nodeid
         statistics.visitedNodes++;
         statistics.visited.add(e.to);
 //        System.out.println(statistics.bestPath.size());
     }
 
-    protected abstract void realizarBusca(Graph g, int origin, int target);
+    protected abstract void realizarBusca(int origin, int target);
 
 
-    public void buscaAux(Graph g, int origin, int target){
-        statistics = new SearchStatistics(g.getSize());
-
+    public void buscaAux(int origin, int target){
         long start = System.nanoTime();
-        realizarBusca(g,origin,target);
+        realizarBusca(origin,target);
 
 
         long end = System.nanoTime();

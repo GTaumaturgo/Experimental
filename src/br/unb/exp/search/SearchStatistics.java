@@ -28,7 +28,7 @@ public class SearchStatistics {
 
     }
 
-    boolean wasVisited(int nodeid){
+    public boolean wasVisited(int nodeid){
         return visited.contains(nodeid);
     }
 

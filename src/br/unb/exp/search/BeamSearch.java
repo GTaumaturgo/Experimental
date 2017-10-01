@@ -7,7 +7,7 @@ import java.util.Queue;
 
 public class BeamSearch extends Search {
     @Override
-    protected void realizarBusca(Graph g, int origin, int target) {
+    protected void realizarBusca(int origin, int target) {
 
     }
 
