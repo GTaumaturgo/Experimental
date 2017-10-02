@@ -74,35 +74,36 @@ public class Main {
 //        g.addEdge(0,2,1.99);
 //        g.addEdge(2,3,1.0);
 //        g.addEdge(0,3,1000.0);
+        System.out.println("Breadth First Search:");
         BreadthFirstSearch bfs = new BreadthFirstSearch(h);
         bfs.buscaAux(0,3);
         st = bfs.getStatistics();
-        printa(st.pathWeight);
-//
+        printa("\tPath weight = " + st.pathWeight);
+        printa("\tNodes visited = " + st.visitedNodes);
+
+        System.out.println("Uniform Cost Search:");
         UniformCostSearch ucs = new UniformCostSearch(h);
         ucs.buscaAux(0,3);
         st = ucs.getStatistics();
-        printa(st.pathWeight);
-//        Calculator c = new Calculator();
-//        System.out.println(c.calculateDistance(coordinates.get(0),coordinates.get(1)));
+        printa("\tPath weight = " + st.pathWeight);
+        printa("\tNodes visited = " + st.visitedNodes);
 
+
+        System.out.println("Greedy Search:");
         GreedySearch gs = new GreedySearch(h,coordinates);
         gs.buscaAux(0,3);
         st = gs.getStatistics();
-        printa(st.pathWeight);
-
-//        DepthFirstSearch dfs = new DepthFirstSearch(h);
-//        int ans = 0;
-//        for (int i = 0; i < h.getSize(); i++) {
-//            if(!dfs.getStatistics().wasVisited(i)){
-//                dfs.buscaAux(i,-1);
-//                ans++;
-//            }
-//        }
-
-//        System.out.println(ans);
+        printa("\tPath weight = " + st.pathWeight);
+        printa("\tNodes visited = " + st.visitedNodes);
 
 
+
+        System.out.println("A* Search:");
+        AStarSearch as = new AStarSearch(h,coordinates);
+        as.buscaAux(0,3);
+        st = as.getStatistics();
+        printa("\tPath weight = " + st.pathWeight);
+        printa("\tNodes visited = " + st.visitedNodes);
 
 
 

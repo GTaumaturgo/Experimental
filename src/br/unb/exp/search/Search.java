@@ -7,6 +7,7 @@ import br.unb.exp.Graph.Node;
 import java.util.Queue;
 
 public abstract class Search {
+
     protected SearchStatistics statistics;
     Graph g;
 
@@ -14,7 +15,6 @@ public abstract class Search {
     public void markVisit(Edge e){// TODO trocar pra nodeid
         statistics.visitedNodes++;
         statistics.visited.add(e.to);
-
 //        System.out.println(statistics.bestPath.size());
     }
 
