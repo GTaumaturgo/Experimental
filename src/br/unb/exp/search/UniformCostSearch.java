@@ -4,7 +4,6 @@ import br.unb.exp.Graph.Edge;
 import br.unb.exp.Graph.Graph;
 
 import java.util.PriorityQueue;
-import java.util.Timer;
 
 public class UniformCostSearch extends Search {
     public UniformCostSearch(Graph g) {
@@ -21,6 +20,12 @@ public class UniformCostSearch extends Search {
         while(q.size() > 0){
             Edge e = q.poll();
 
+            if(statistics.wasVisited(e.to))
+            {
+                markVisit(e);
+                continue;
+            }
+
             markVisit(e);
             if(e.to == target){
                 statistics.pathWeight = e.weight;
@@ -29,12 +34,11 @@ public class UniformCostSearch extends Search {
 
 
             for (Edge w: g.getNode(e.to).adjList){
-                if (statistics.bestPath.get(w.to) > e.weight + w.weight){
+//                if (statistics.bestPath.get(w.to) > e.weight + w.weight){
 
-                    q.add(new Edge(w.to,w.weight + e.weight));
-                    statistics.bestPath.add(w.to,e.weight + w.weight);
-//                    statistics.ancestor.add(w.to,new Edge(e.to,w.weight));
-                    }
+                q.add(new Edge(w.to,w.weight + e.weight));
+//                statistics.bestPath.add(w.to,e.weight + w.weight);
+//                }
             }
 
         }

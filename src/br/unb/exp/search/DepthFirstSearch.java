@@ -15,9 +15,9 @@ public class DepthFirstSearch extends Search {
         if(statistics.wasVisited(origin))
             return;
         markVisit(new Edge(origin,0.0));
+
         System.out.println(origin);
         for(Edge e: g.getNode(origin).adjList){
-
             realizarBusca(e.to,-1);
         }
 

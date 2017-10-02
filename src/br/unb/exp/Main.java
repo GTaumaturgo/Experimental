@@ -1,5 +1,6 @@
 package br.unb.exp;
 
+import br.unb.exp.Calculator.Calculator;
 import br.unb.exp.Graph.Graph;
 import br.unb.exp.search.*;
 
@@ -33,7 +34,7 @@ public class Main {
                 int idx = input.nextInt();
                 idx--;// indexado em 0
                 double lon = input.nextDouble();
-                lon /= 1000000; // precisa dividir por 100
+                lon /= 1000000; // precisa dividir por 10^6
                 double lat = input.nextDouble();
                 lat /= 1000000;
 
@@ -71,14 +72,17 @@ public class Main {
 //        g.addEdge(0,2,1.99);
 //        g.addEdge(2,3,1.0);
 //        g.addEdge(0,3,1000.0);
-        BreadthFirstSearch bfs = new BreadthFirstSearch(h);
-        bfs.buscaAux(60,59);
-        SearchStatistics statistics = bfs.getStatistics();
-        printa(statistics.pathWeight);
-//        UniformCostSearch ucs = new UniformCostSearch(h);
-//        ucs.buscaAux(0,3);
-//        SearchStatistics st = ucs.getStatistics();
-//        printa(st.pathWeight);
+//        BreadthFirstSearch bfs = new BreadthFirstSearch(h);
+//        bfs.buscaAux(0,3);
+//        SearchStatistics statistics = bfs.getStatistics();
+//        printa(statistics.pathWeight);
+        UniformCostSearch ucs = new UniformCostSearch(h);
+        ucs.buscaAux(0,1);
+        SearchStatistics st = ucs.getStatistics();
+        printa(st.pathWeight);
+        Calculator c = new Calculator();
+        System.out.println(c.calculateDistance(coordinates.get(0),coordinates.get(1)));
+
 //        GreedySearch gs = new GreedySearch(h,coordinates);
 //        gs.buscaAux(0,3);
 //        st = gs.getStatistics();
@@ -86,13 +90,13 @@ public class Main {
 
 //        DepthFirstSearch dfs = new DepthFirstSearch(h);
 //        int ans = 0;
-//        for (int i = 1; i < h.getSize(); i++) {
-//            if(dfs.getStatistics().wasVisited(i))
-//                continue;
-//            dfs.buscaAux(i,-1);
-//            ans++;
+//        for (int i = 0; i < h.getSize(); i++) {
+//            if(!dfs.getStatistics().wasVisited(i)){
+//                dfs.buscaAux(i,-1);
+//                ans++;
+//            }
 //        }
-//
+
 //        System.out.println(ans);
 
 

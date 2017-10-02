@@ -12,7 +12,7 @@ public class SearchStatistics {
     HashSet<Integer> visited;
     public double pathWeight;
     public ArrayList<Double> bestPath;
-    public ArrayList<Edge> ancestor;
+    public HashSet<Integer> enqueued;
     public SearchStatistics(int size){
         double inf = 1e9;
         visitedNodes = -1;
@@ -20,16 +20,19 @@ public class SearchStatistics {
         execTime = 0;
         visited = new HashSet<Integer>();
         bestPath = new ArrayList<>(size);
-        ancestor = new ArrayList<>(size);
+        enqueued = new HashSet<Integer>();
         for (int i = 0; i < size; i++) {
              bestPath.add(i,inf);
-             ancestor.add(i,new Edge(-1,0));
+//             ancestor.add(i,new Edge(-1,0));
         }
 
     }
 
     public boolean wasVisited(int nodeid){
         return visited.contains(nodeid);
+    }
+    public boolean wasEnqueued(int nodeid){
+        return enqueued.contains(nodeid);
     }
 
 }
