@@ -53,7 +53,8 @@ public class Main {
                 int b = input.nextInt();
                 a--;
                 b--;//indexado em 0
-                int w = input.nextInt();
+                double w = input.nextDouble();
+                w /= 10.0;
 //                printa(w);
                 h.addEdge(a,b,(double)w);// TODO descobrir a unidade que ele dá essa
                 // distancia, porque a distanciad da heuristica ta vindo em metros e n pode misturar.
@@ -63,6 +64,7 @@ public class Main {
         }
         catch (Exception e){printa(e.getMessage());}
 
+        SearchStatistics st;
 
 //        System.out.println(coordinates.get(0).longitude);
 //        // teste BFS
@@ -72,21 +74,22 @@ public class Main {
 //        g.addEdge(0,2,1.99);
 //        g.addEdge(2,3,1.0);
 //        g.addEdge(0,3,1000.0);
-//        BreadthFirstSearch bfs = new BreadthFirstSearch(h);
-//        bfs.buscaAux(0,3);
-//        SearchStatistics statistics = bfs.getStatistics();
-//        printa(statistics.pathWeight);
-        UniformCostSearch ucs = new UniformCostSearch(h);
-        ucs.buscaAux(0,1);
-        SearchStatistics st = ucs.getStatistics();
+        BreadthFirstSearch bfs = new BreadthFirstSearch(h);
+        bfs.buscaAux(0,3);
+        st = bfs.getStatistics();
         printa(st.pathWeight);
-        Calculator c = new Calculator();
-        System.out.println(c.calculateDistance(coordinates.get(0),coordinates.get(1)));
+//
+        UniformCostSearch ucs = new UniformCostSearch(h);
+        ucs.buscaAux(0,3);
+        st = ucs.getStatistics();
+        printa(st.pathWeight);
+//        Calculator c = new Calculator();
+//        System.out.println(c.calculateDistance(coordinates.get(0),coordinates.get(1)));
 
-//        GreedySearch gs = new GreedySearch(h,coordinates);
-//        gs.buscaAux(0,3);
-//        st = gs.getStatistics();
-//        printa(st.pathWeight);
+        GreedySearch gs = new GreedySearch(h,coordinates);
+        gs.buscaAux(0,3);
+        st = gs.getStatistics();
+        printa(st.pathWeight);
 
 //        DepthFirstSearch dfs = new DepthFirstSearch(h);
 //        int ans = 0;

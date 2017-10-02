@@ -20,8 +20,7 @@ public class UniformCostSearch extends Search {
         while(q.size() > 0){
             Edge e = q.poll();
 
-            if(statistics.wasVisited(e.to))
-            {
+            if(statistics.wasVisited(e.to)) {
                 markVisit(e);
                 continue;
             }

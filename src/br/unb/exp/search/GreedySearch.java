@@ -14,6 +14,7 @@ public class GreedySearch extends Search {
     public GreedySearch(Graph g, HashMap<Integer, Coordinate> coordinates) {
         this.g = g;
         this.coordinates = coordinates;
+        this.statistics = new SearchStatistics(g.getSize());
     }
 
     @Override
@@ -23,12 +24,18 @@ public class GreedySearch extends Search {
 
 
 
-
         q.add(new HeuristicState(new Edge(origin,0.0),0.0));
+
         while(q.size() > 0){
 
 
             HeuristicState u = q.poll();
+
+            if(statistics.wasVisited(u.estimatedCost.to)){
+                markVisit(u.estimatedCost);
+                continue;
+            }
+
             markVisit(u.estimatedCost);
             if(u.estimatedCost.to == target){
                 statistics.pathWeight = u.realCost;
