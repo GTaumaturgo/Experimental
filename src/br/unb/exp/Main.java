@@ -5,8 +5,7 @@ import br.unb.exp.Graph.Graph;
 import br.unb.exp.search.*;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -15,15 +14,10 @@ public class Main {
         System.out.println(o.toString());
     }
 
-
-    public static void main(String[] args) {
-
-        Graph h = new Graph(264346);
-
+    public static void le_arquivos(Graph h,HashMap<Integer,Coordinate> coordinates){
         String prefix = "files/";
         String coord = "USA-road-d.NY.co";
         String graph = "USA-road-d.NY.gr";
-        HashMap<Integer,Coordinate> coordinates = new HashMap<>();
         try{
 
             File f = new File(prefix + coord);
@@ -43,6 +37,7 @@ public class Main {
             input.close();
         }
         catch (Exception e){printa("arquivo n encontrado");}
+
         try{
 
             File f = new File(prefix + graph);
@@ -55,58 +50,58 @@ public class Main {
                 b--;//indexado em 0
                 double w = input.nextDouble();
                 w /= 10.0;
-//                printa(w);
-                h.addEdge(a,b,(double)w);// TODO descobrir a unidade que ele dá essa
-                // distancia, porque a distanciad da heuristica ta vindo em metros e n pode misturar.
-
+                h.addEdge(a,b,w);
             }
             input.close();
         }
         catch (Exception e){printa(e.getMessage());}
+    }
 
+    public static void main(String[] args) {
+
+        Graph h = new Graph(264346);
+        HashMap<Integer,Coordinate> coordinates = new HashMap<>();
+
+//        le_arquivos(h,coordinates);
         SearchStatistics st;
 
-//        System.out.println(coordinates.get(0).longitude);
-//        // teste BFS
-//        Graph g = new Graph(4);
-//        g.addEdge(0,1,1.0);
-//        g.addEdge(1,2,1.0);
-//        g.addEdge(0,2,1.99);
-//        g.addEdge(2,3,1.0);
-//        g.addEdge(0,3,1000.0);
-        System.out.println("Breadth First Search:");
-        BreadthFirstSearch bfs = new BreadthFirstSearch(h);
-        bfs.buscaAux(0,3);
-        st = bfs.getStatistics();
-        printa("\tPath weight = " + st.pathWeight);
-        printa("\tNodes visited = " + st.visitedNodes);
 
-        System.out.println("Uniform Cost Search:");
-        UniformCostSearch ucs = new UniformCostSearch(h);
-        ucs.buscaAux(0,3);
-        st = ucs.getStatistics();
-        printa("\tPath weight = " + st.pathWeight);
-        printa("\tNodes visited = " + st.visitedNodes);
+//        System.out.println("Breadth First Search:");
+//        BreadthFirstSearch bfs = new BreadthFirstSearch(h);
+//        bfs.buscaAux(0,3);
+//        st = bfs.getStatistics();
+//        printa("\tPath weight = " + st.pathWeight);
+//        printa("\tNodes visited = " + st.visitedNodes);
+//
+//        System.out.println("Uniform Cost Search:");
+//        UniformCostSearch ucs = new UniformCostSearch(h);
+//        ucs.buscaAux(0,3);
+//        st = ucs.getStatistics();
+//        printa("\tPath weight = " + st.pathWeight);
+//        printa("\tNodes visited = " + st.visitedNodes);
+//
+//
+//        System.out.println("Greedy Search:");
+//        GreedySearch gs = new GreedySearch(h,coordinates);
+//        gs.buscaAux(0,3);
+//        st = gs.getStatistics();
+//        printa("\tPath weight = " + st.pathWeight);
+//        printa("\tNodes visited = " + st.visitedNodes);
+//
+//        System.out.println("A* Search:");
+//        AStarSearch as = new AStarSearch(h,coordinates);
+//        as.buscaAux(0,3);
+//        st = as.getStatistics();
+//        printa("\tPath weight = " + st.pathWeight);
+//        printa("\tNodes visited = " + st.visitedNodes);
 
+        HashSet<Integer> nodes = new HashSet<Integer>();
+        Random r = new Random();
 
-        System.out.println("Greedy Search:");
-        GreedySearch gs = new GreedySearch(h,coordinates);
-        gs.buscaAux(0,3);
-        st = gs.getStatistics();
-        printa("\tPath weight = " + st.pathWeight);
-        printa("\tNodes visited = " + st.visitedNodes);
-
-
-
-        System.out.println("A* Search:");
-        AStarSearch as = new AStarSearch(h,coordinates);
-        as.buscaAux(0,3);
-        st = as.getStatistics();
-        printa("\tPath weight = " + st.pathWeight);
-        printa("\tNodes visited = " + st.visitedNodes);
-
-
-
+        nodes.add(r.nextInt(264346));
+        nodes.add(r.nextInt(264346));
+        nodes.add(r.nextInt(264346));
+        
 
     }
 }
