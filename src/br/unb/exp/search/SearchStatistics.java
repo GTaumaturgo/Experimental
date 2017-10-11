@@ -13,8 +13,9 @@ public class SearchStatistics {
     public double pathWeight;
     public ArrayList<Double> bestPath;
     public HashSet<Integer> enqueued;
+
     public SearchStatistics(int size){
-        double inf = 1e9;
+        double inf = 1e20;
         visitedNodes = -1;
         uniqueNodesVisited = -1;
         execTime = 0;
@@ -25,6 +26,8 @@ public class SearchStatistics {
              bestPath.add(i,inf);
 //             ancestor.add(i,new Edge(-1,0));
         }
+
+
 
     }
 

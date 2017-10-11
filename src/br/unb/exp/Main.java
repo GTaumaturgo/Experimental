@@ -62,7 +62,7 @@ public class Main {
         Graph h = new Graph(264346);
         HashMap<Integer,Coordinate> coordinates = new HashMap<>();
 
-//        le_arquivos(h,coordinates);
+        le_arquivos(h,coordinates);
         SearchStatistics st;
 
 
@@ -73,13 +73,16 @@ public class Main {
 //        printa("\tPath weight = " + st.pathWeight);
 //        printa("\tNodes visited = " + st.visitedNodes);
 //
-//        System.out.println("Uniform Cost Search:");
-//        UniformCostSearch ucs = new UniformCostSearch(h);
-//        ucs.buscaAux(0,3);
-//        st = ucs.getStatistics();
-//        printa("\tPath weight = " + st.pathWeight);
-//        printa("\tNodes visited = " + st.visitedNodes);
-//
+        System.out.println("Uniform Cost Search:");
+        UniformCostSearch ucs = new UniformCostSearch(h);
+        ucs.buscaAux(0,2);
+        st = ucs.getStatistics();
+        printa(st.bestPath.get(0));
+        printa(st.bestPath.get(1));
+        printa(st.bestPath.get(2));
+        printa("\tPath weight = " + st.pathWeight);
+        printa("\tNodes visited = " + st.visitedNodes);
+
 //
 //        System.out.println("Greedy Search:");
 //        GreedySearch gs = new GreedySearch(h,coordinates);
@@ -101,7 +104,8 @@ public class Main {
         nodes.add(r.nextInt(264346));
         nodes.add(r.nextInt(264346));
         nodes.add(r.nextInt(264346));
-        
+
+
 
     }
 }

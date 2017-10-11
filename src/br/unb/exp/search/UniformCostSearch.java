@@ -17,6 +17,7 @@ public class UniformCostSearch extends Search {
         PriorityQueue<Edge> q = new PriorityQueue<>();
         q.add(new Edge(origin,0.0));
 
+        statistics.bestPath.add(origin,0.0);
         while(q.size() > 0){
             Edge e = q.poll();
 
@@ -33,11 +34,11 @@ public class UniformCostSearch extends Search {
 
 
             for (Edge w: g.getNode(e.to).adjList){
-//                if (statistics.bestPath.get(w.to) > e.weight + w.weight){
+                if (!statistics.wasVisited(w.to)){
 
-                q.add(new Edge(w.to,w.weight + e.weight));
-//                statistics.bestPath.add(w.to,e.weight + w.weight);
-//                }
+                    q.add(new Edge(w.to,w.weight + e.weight));
+                    statistics.bestPath.add(w.to,Math.min(e.weight + w.weight,statistics.bestPath.get(w.to)));
+                }
             }
 
         }
