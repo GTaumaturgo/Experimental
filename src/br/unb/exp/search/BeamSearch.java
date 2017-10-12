@@ -12,7 +12,7 @@ import java.util.PriorityQueue;
 public class BeamSearch extends Search {
 
 
-    HashMap<Integer,Coordinate> coordinates;
+
 
     public BeamSearch(Graph g, HashMap<Integer, Coordinate> coordinates) {
         this.g = g;

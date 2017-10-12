@@ -73,15 +73,15 @@ public class Main {
 //        printa("\tPath weight = " + st.pathWeight);
 //        printa("\tNodes visited = " + st.visitedNodes);
 //
-        System.out.println("Uniform Cost Search:");
-        UniformCostSearch ucs = new UniformCostSearch(h);
-        ucs.buscaAux(0,2);
-        st = ucs.getStatistics();
-        printa(st.bestPath.get(0));
-        printa(st.bestPath.get(1));
-        printa(st.bestPath.get(2));
-        printa("\tPath weight = " + st.pathWeight);
-        printa("\tNodes visited = " + st.visitedNodes);
+//        System.out.println("Uniform Cost Search:");
+//        UniformCostSearch ucs = new UniformCostSearch(h);
+//        ucs.buscaAux(0,2);
+//        st = ucs.getStatistics();
+//        printa(st.bestPath.get(0));
+//        printa(st.bestPath.get(1));
+//        printa(st.bestPath.get(2));
+//        printa("\tPath weight = " + st.pathWeight);
+//        printa("\tNodes visited = " + st.visitedNodes);
 
 //
 //        System.out.println("Greedy Search:");
@@ -101,11 +101,25 @@ public class Main {
         HashSet<Integer> nodes = new HashSet<Integer>();
         Random r = new Random();
 
-        nodes.add(r.nextInt(264346));
-        nodes.add(r.nextInt(264346));
-        nodes.add(r.nextInt(264346));
+        for (int i = 0; i < 5; i ++){
+            int a;
+            do{
+                a = r.nextInt(264346);
+            }while(nodes.contains(a));
+            nodes.add(a);
+        }
+
+        UniformCostSearch ucs = new UniformCostSearch(h,coordinates);
+        ucs.buscaAux(11201,-1);
+        st = ucs.getStatistics();
+        printa(st.heuristicMaxError);
+        printa( segundos(st.execTime));
 
 
 
+    }
+
+    private static String segundos(long execTime) {
+        return (new Double(execTime / 1e9).toString()) + " segundos";
     }
 }

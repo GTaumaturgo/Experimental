@@ -1,16 +1,18 @@
 package br.unb.exp.search;
 
+import br.unb.exp.Coordinate;
 import br.unb.exp.Graph.Edge;
 import br.unb.exp.Graph.Graph;
 import br.unb.exp.Graph.Node;
 
+import java.util.HashMap;
 import java.util.Queue;
 
 public abstract class Search {
 
     protected SearchStatistics statistics;
     Graph g;
-
+    HashMap<Integer,Coordinate> coordinates;
 
     public void markVisit(Edge e){// TODO trocar pra nodeid
         statistics.visitedNodes++;
