@@ -1,6 +1,7 @@
 package br.unb.exp;
 
 import br.unb.exp.Calculator.Calculator;
+import br.unb.exp.Graph.Edge;
 import br.unb.exp.Graph.Graph;
 import br.unb.exp.search.*;
 
@@ -57,6 +58,10 @@ public class Main {
         catch (Exception e){printa(e.getMessage());}
     }
 
+    private static String segundos(long execTime) {
+        return (Double.toString(execTime / 1e9)) + " segundos";
+    }
+
     public static void main(String[] args) {
 
         Graph h = new Graph(264346);
@@ -91,12 +96,12 @@ public class Main {
 //        printa("\tPath weight = " + st.pathWeight);
 //        printa("\tNodes visited = " + st.visitedNodes);
 //
-//        System.out.println("A* Search:");
-//        AStarSearch as = new AStarSearch(h,coordinates);
-//        as.buscaAux(0,3);
-//        st = as.getStatistics();
-//        printa("\tPath weight = " + st.pathWeight);
-//        printa("\tNodes visited = " + st.visitedNodes);
+        System.out.println("A* Search:");
+        AStarSearch as = new AStarSearch(h,coordinates,1.0) ;
+        as.buscaAux(0,3);
+        st = as.getStatistics();
+        printa("\tPath weight = " + st.pathWeight);
+        printa("\tNodes visited = " + st.visitedNodes);
 
         HashSet<Integer> nodes = new HashSet<Integer>();
         Random r = new Random();
@@ -109,17 +114,49 @@ public class Main {
             nodes.add(a);
         }
 
-        UniformCostSearch ucs = new UniformCostSearch(h,coordinates);
-        ucs.buscaAux(11201,-1);
-        st = ucs.getStatistics();
-        printa(st.heuristicMaxError);
-        printa( segundos(st.execTime));
+
+        for(Integer u:nodes){
+
+            UniformCostSearch ucs = new UniformCostSearch(h,coordinates);
+            ucs.buscaAux(u,-1);
+            st = ucs.getStatistics();
+            printa(st.heuristicMaxError);
+            ArrayList<Integer> km5 = new ArrayList<>();
+            ArrayList<Integer> km15 = new ArrayList<>();
+            ArrayList<Integer> km50 = new ArrayList<>();
+            ArrayList<Integer> km50mais = new ArrayList<>();
+            printa(u);
+            for (int i = 0; i < h.getSize(); i++) {
+                if(i == u)
+                    continue;
+                if(st.bestPath.get(i) <= 5000.0)
+                    km5.add(km5.size(),i);
+                else if(st.bestPath.get(i) <= 15000.0)
+                    km15.add(km15.size(),i);
+                else if(st.bestPath.get(i) <= 50000.0)
+                    km50.add(km50.size(),i);
+                else
+                    km50mais.add(km50mais.size(),i);
+
+            }
+            printa(km5.size());
+            printa(km15.size());
+            printa(km50.size());
+            printa(km50mais.size());
+            break;
+
+
+
+        }
+
+
+
+
+
 
 
 
     }
 
-    private static String segundos(long execTime) {
-        return (new Double(execTime / 1e9).toString()) + " segundos";
-    }
+
 }

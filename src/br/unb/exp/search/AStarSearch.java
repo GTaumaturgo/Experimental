@@ -11,12 +11,12 @@ import java.util.PriorityQueue;
 
 public class AStarSearch extends Search {
 
-    HashMap<Integer,Coordinate> coordinates;
-
-    public AStarSearch(Graph g, HashMap<Integer, Coordinate> coordinates) {
+    double factor;
+    public AStarSearch(Graph g, HashMap<Integer, Coordinate> coordinates,double factor) {
         this.g = g;
         this.coordinates = coordinates;
         this.statistics = new SearchStatistics(g.getSize());
+        this.factor = factor;
     }
 
 
@@ -48,7 +48,7 @@ public class AStarSearch extends Search {
 
             for(Edge w: g.getNode(u.estimatedCost.to).adjList){
                 double distance = c.calculateDistance(coordinates.get(target),coordinates.get(w.to));
-                q.add(new HeuristicState(new Edge(w.to,distance + u.realCost + w.weight),u.realCost + w.weight));
+                q.add(new HeuristicState(new Edge(w.to,(distance / factor) + u.realCost + w.weight),u.realCost + w.weight));
 
             }
         }
