@@ -63,7 +63,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
+        int k = 3;
         Graph h = new Graph(264346);
         HashMap<Integer,Coordinate> coordinates = new HashMap<>();
 
@@ -96,12 +96,12 @@ public class Main {
 //        printa("\tPath weight = " + st.pathWeight);
 //        printa("\tNodes visited = " + st.visitedNodes);
 //
-        System.out.println("A* Search:");
-        AStarSearch as = new AStarSearch(h,coordinates,1.0) ;
-        as.buscaAux(0,3);
-        st = as.getStatistics();
-        printa("\tPath weight = " + st.pathWeight);
-        printa("\tNodes visited = " + st.visitedNodes);
+//        System.out.println("A* Search:");
+//        AStarSearch as = new AStarSearch(h,coordinates,1.0) ;
+//        as.buscaAux(0,3);
+//        st = as.getStatistics();
+//        printa("\tPath weight = " + st.pathWeight);
+//        printa("\tNodes visited = " + st.visitedNodes);
 
         HashSet<Integer> nodes = new HashSet<Integer>();
         Random r = new Random();
@@ -117,9 +117,9 @@ public class Main {
 
         for(Integer u:nodes){
 
-            UniformCostSearch ucs = new UniformCostSearch(h,coordinates);
-            ucs.buscaAux(u,-1);
-            st = ucs.getStatistics();
+            UniformCostSearch ucsAux = new UniformCostSearch(h,coordinates);
+            ucsAux.buscaAux(u,-1);
+            st = ucsAux.getStatistics();
             printa(st.heuristicMaxError);
             ArrayList<Integer> km5 = new ArrayList<>();
             ArrayList<Integer> km15 = new ArrayList<>();
@@ -138,12 +138,27 @@ public class Main {
                 else
                     km50mais.add(km50mais.size(),i);
 
+                r.nextInt(km5.size());
+
+
             }
-            printa(km5.size());
-            printa(km15.size());
-            printa(km50.size());
-            printa(km50mais.size());
-            break;
+            HashSet<Integer> aux = new HashSet<>();
+            do{
+                aux.add(r.nextInt(km5.size()));
+            }while(aux.size() < k);
+
+            BreadthFirstSearch bfs = new BreadthFirstSearch(h);
+            UniformCostSearch ucs = new UniformCostSearch(h);
+            GreedySearch gs = new GreedySearch(h,coordinates);
+            AStarSearch as = new AStarSearch(h,coordinates,st.heuristicMaxError);
+
+
+
+
+
+
+
+
 
 
 
