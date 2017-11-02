@@ -22,6 +22,10 @@ public class DWAStarSearch extends Search {
     @Override
     protected void realizarBusca( int origin, int target) {
         PriorityQueue<HeuristicState> q;
+
+
+
+
     }
 
 }

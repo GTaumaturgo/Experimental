@@ -71,52 +71,26 @@ public class Main {
         SearchStatistics st;
 
 
-//        System.out.println("Breadth First Search:");
-//        BreadthFirstSearch bfs = new BreadthFirstSearch(h);
-//        bfs.buscaAux(0,3);
-//        st = bfs.getStatistics();
-//        printa("\tPath weight = " + st.pathWeight);
-//        printa("\tNodes visited = " + st.visitedNodes);
-//
-//        System.out.println("Uniform Cost Search:");
-//        UniformCostSearch ucs = new UniformCostSearch(h);
-//        ucs.buscaAux(0,2);
-//        st = ucs.getStatistics();
-//        printa(st.bestPath.get(0));
-//        printa(st.bestPath.get(1));
-//        printa(st.bestPath.get(2));
-//        printa("\tPath weight = " + st.pathWeight);
-//        printa("\tNodes visited = " + st.visitedNodes);
 
-//
-//        System.out.println("Greedy Search:");
-//        GreedySearch gs = new GreedySearch(h,coordinates);
-//        gs.buscaAux(0,3);
-//        st = gs.getStatistics();
-//        printa("\tPath weight = " + st.pathWeight);
-//        printa("\tNodes visited = " + st.visitedNodes);
-//
-//        System.out.println("A* Search:");
-//        AStarSearch as = new AStarSearch(h,coordinates,1.0) ;
-//        as.buscaAux(0,3);
-//        st = as.getStatistics();
-//        printa("\tPath weight = " + st.pathWeight);
-//        printa("\tNodes visited = " + st.visitedNodes);
+
+        ArrayList<SearchStatistics> resBFS = new ArrayList<>();
+        ArrayList<SearchStatistics> resUCS = new ArrayList<>();
+        ArrayList<SearchStatistics> resGS = new ArrayList<>();
+        ArrayList<SearchStatistics> resAS = new ArrayList<>();
 
         HashSet<Integer> nodes = new HashSet<Integer>();
         Random r = new Random();
 
-        for (int i = 0; i < 5; i ++){
+
+        while(nodes.size() < 5){
             int a;
             do{
+
                 a = r.nextInt(264346);
+
             }while(nodes.contains(a));
-            nodes.add(a);
-        }
 
-
-        for(Integer u:nodes){
-
+            int u = a;
             UniformCostSearch ucsAux = new UniformCostSearch(h,coordinates);
             ucsAux.buscaAux(u,-1);
             st = ucsAux.getStatistics();
@@ -125,42 +99,49 @@ public class Main {
             ArrayList<Integer> km15 = new ArrayList<>();
             ArrayList<Integer> km50 = new ArrayList<>();
             ArrayList<Integer> km50mais = new ArrayList<>();
+
             printa(u);
             for (int i = 0; i < h.getSize(); i++) {
-                if(i == u)
+                if(i == u) {
                     continue;
-                if(st.bestPath.get(i) <= 5000.0)
+                }
+                if(st.bestPath.get(i) <= 5000.0) {
                     km5.add(km5.size(),i);
-                else if(st.bestPath.get(i) <= 15000.0)
+                }
+                else if(st.bestPath.get(i) <= 15000.0) {
                     km15.add(km15.size(),i);
-                else if(st.bestPath.get(i) <= 50000.0)
+                }
+                else if(st.bestPath.get(i) <= 50000.0) {
                     km50.add(km50.size(),i);
+                }
                 else
                     km50mais.add(km50mais.size(),i);
-
-                r.nextInt(km5.size());
-
-
             }
+
+            if(km5.size() < 3)
+                continue;
             HashSet<Integer> aux = new HashSet<>();
             do{
                 aux.add(r.nextInt(km5.size()));
             }while(aux.size() < k);
+
 
             BreadthFirstSearch bfs = new BreadthFirstSearch(h);
             UniformCostSearch ucs = new UniformCostSearch(h);
             GreedySearch gs = new GreedySearch(h,coordinates);
             AStarSearch as = new AStarSearch(h,coordinates,st.heuristicMaxError);
 
-
-
-
-
-
-
-
-
-
+            for(Integer v: aux){
+                bfs.buscaAux(u,v);
+                resBFS.add(bfs.getStatistics());
+                ucs.buscaAux(u,v);
+                resUCS.add(ucs.getStatistics());
+                gs.buscaAux(u,v);
+                resGS.add(gs.getStatistics());
+                as.buscaAux(u,v);
+                resAS.add(as.getStatistics());
+            }
+            nodes.add(a);
 
         }
 
