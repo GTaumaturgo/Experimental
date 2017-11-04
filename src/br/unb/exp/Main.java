@@ -62,6 +62,7 @@ public class Main {
         return (Double.toString(execTime / 1e9)) + " segundos";
     }
 
+
     public static void main(String[] args) {
         int k = 3;
         Graph h = new Graph(264346);
@@ -82,6 +83,13 @@ public class Main {
         Random r = new Random();
 
 
+        HashSet<Integer> aux;
+        BreadthFirstSearch bfs = new BreadthFirstSearch(h);
+        UniformCostSearch ucs = new UniformCostSearch(h);
+        GreedySearch gs = new GreedySearch(h,coordinates);
+        AStarSearch as;
+
+
         while(nodes.size() < 5){
             int a;
             do{
@@ -94,7 +102,7 @@ public class Main {
             UniformCostSearch ucsAux = new UniformCostSearch(h,coordinates);
             ucsAux.buscaAux(u,-1);
             st = ucsAux.getStatistics();
-            printa(st.heuristicMaxError);
+
             ArrayList<Integer> km5 = new ArrayList<>();
             ArrayList<Integer> km15 = new ArrayList<>();
             ArrayList<Integer> km50 = new ArrayList<>();
@@ -114,45 +122,116 @@ public class Main {
                 else if(st.bestPath.get(i) <= 50000.0) {
                     km50.add(km50.size(),i);
                 }
-                else
+                else {
                     km50mais.add(km50mais.size(),i);
+                }
             }
 
-            if(km5.size() < 3)
+            if(km5.size() < 3) {
                 continue;
-            HashSet<Integer> aux = new HashSet<>();
+            }
+            printa("Inteiro:");
+            printa(u);
+
+            as = new AStarSearch(h,coordinates,st.heuristicMaxError);
+
+
+            aux = new HashSet<>();
             do{
                 aux.add(r.nextInt(km5.size()));
+
             }while(aux.size() < k);
 
 
-            BreadthFirstSearch bfs = new BreadthFirstSearch(h);
-            UniformCostSearch ucs = new UniformCostSearch(h);
-            GreedySearch gs = new GreedySearch(h,coordinates);
-            AStarSearch as = new AStarSearch(h,coordinates,st.heuristicMaxError);
-
             for(Integer v: aux){
-                bfs.buscaAux(u,v);
+                printa("v = ");
+                printa(v);
+                bfs.buscaAux(u,km5.get(v));
                 resBFS.add(bfs.getStatistics());
-                ucs.buscaAux(u,v);
+                ucs.buscaAux(u,km5.get(v));
                 resUCS.add(ucs.getStatistics());
-                gs.buscaAux(u,v);
+                gs.buscaAux(u,km5.get(v));
                 resGS.add(gs.getStatistics());
-                as.buscaAux(u,v);
+                as.buscaAux(u,km5.get(v));
                 resAS.add(as.getStatistics());
             }
+
+
+//            aux = new HashSet<>();
+//            do{
+//                aux.add(r.nextInt(km15.size()));
+//            }while(aux.size() < k);
+//
+//
+//            for(Integer v: aux){
+//                bfs.buscaAux(u,km15.get(v));
+//                resBFS.add(bfs.getStatistics());
+//                ucs.buscaAux(u,km15.get(v));
+//                resUCS.add(ucs.getStatistics());
+//                gs.buscaAux(u,km15.get(v));
+//                resGS.add(gs.getStatistics());
+//                as.buscaAux(u,km15.get(v));
+//                resAS.add(as.getStatistics());
+//            }
+
+//            aux = new HashSet<>();
+//            do{
+//                aux.add(r.nextInt(km50.size()));
+//            }while(aux.size() < k);
+//
+//
+//            for(Integer v: aux){
+//                bfs.buscaAux(u,km50.get(v));
+//                resBFS.add(bfs.getStatistics());
+//                ucs.buscaAux(u,km50.get(v));
+//                resUCS.add(ucs.getStatistics());
+//                gs.buscaAux(u,km50.get(v));
+//                resGS.add(gs.getStatistics());
+//                as.buscaAux(u,km50.get(v));
+//                resAS.add(as.getStatistics());
+//            }
+//            aux = new HashSet<>();
+//            do{
+//                aux.add(r.nextInt(km50mais.size()));
+//            }while(aux.size() < k);
+//
+
+//            for(Integer v: aux){
+//                bfs.buscaAux(u,km50mais.get(v));
+//                resBFS.add(bfs.getStatistics());
+//                ucs.buscaAux(u,km50mais.get(v));
+//                resUCS.add(ucs.getStatistics());
+//                gs.buscaAux(u,km50mais.get(v));
+//                resGS.add(gs.getStatistics());
+//                as.buscaAux(u,km50mais.get(v));
+//                resAS.add(as.getStatistics());
+//            }
             nodes.add(a);
-
+            break;
         }
-
-
-
-
-
-
-
-
+        for(SearchStatistics stat: resBFS){
+            System.out.print(stat.execTime);
+            System.out.print(" ");
+        }
+        System.out.println();
+        for(SearchStatistics stat: resUCS){
+            System.out.print(stat.execTime);
+            System.out.print(" ");
+        }
+        System.out.println();
+        for(SearchStatistics stat: resGS){
+            System.out.print(stat.execTime);
+            System.out.print(" ");
+        }
+        System.out.println();
+        for(SearchStatistics stat: resAS){
+            System.out.print(stat.execTime);
+            System.out.print(" ");
+        }
+        System.out.println();
     }
+
+
 
 
 }
