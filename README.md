@@ -1,3 +1,2 @@
 # Experimental
-hue total
-[Maffei] Repositório PRIVADO?!?! Rico, porco capitalista!! kspskps
+Pode colocar aqui por favor as intruções para rodar o código?
